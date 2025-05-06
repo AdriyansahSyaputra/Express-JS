@@ -1,0 +1,20 @@
+[
+  {
+    "id": "k7HPp6q0Af_a4rxI",
+    "name": "Budi Do",
+    "phone": "0851788232",
+    "email": "budi@gmail.com",
+    "address": "123 Main Street",
+    "jobTitle": "Software Engineer",
+    "birthday": "2025-05-06"
+  },
+  {
+    "id": "p9O6spbqqZ61Op6L",
+    "name": "John Doe",
+    "phone": "0822458624",
+    "email": "john@gmail.com",
+    "address": "Bumi Ayu, Bengkulu",
+    "jobTitle": "Masinis",
+    "birthday": "2025-05-05"
+  }
+]
