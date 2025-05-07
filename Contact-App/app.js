@@ -6,6 +6,7 @@ const {
   addContact,
   checkDuplicate,
   deleteContact,
+  updateContacts,
 } = require("./utils/contacts");
 const { body, validationResult, check } = require("express-validator");
 const session = require("express-session");
@@ -95,10 +96,50 @@ app.get("/contact/delete/:id", (req, res) => {
     res.send("<h1>404</h1>");
   } else {
     deleteContact(req.params.id);
-     req.flash("msg", "Contact deleted successfully!");
+    req.flash("msg", "Contact deleted successfully!");
     res.redirect("/contact");
   }
-})
+});
+
+// Page edit contact
+app.get("/contact/edit/:id", (req, res) => {
+  const contact = findContact(req.params.id);
+  res.render("edit-contact", {
+    title: "Edit Contact",
+    contact,
+  });
+});
+
+// Proses update contact
+app.post(
+  "/contact/update",
+  [
+    body("name").custom((value, { req }) => {
+      const duplicate = checkDuplicate(value);
+      if (value !== req.body.oldName && duplicate) {
+        throw new Error("Contact name already used!");
+      }
+      return true;
+    }),
+
+    check("email", "Email is not valid").isEmail(),
+    check("phone", "Phone number is not valid").isMobilePhone("id-ID"),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("edit-contact", {
+        title: "Edit Contact",
+        errors: errors.array(),
+        contact: req.body,
+      });
+    } else {
+      updateContacts(req.body);
+      req.flash("msg", "Contact updated successfully!");
+      res.redirect("/contact");
+    }
+  }
+);
 
 app.get("/contact/:id", (req, res) => {
   const contact = findContact(req.params.id);

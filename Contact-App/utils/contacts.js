@@ -47,13 +47,54 @@ const addContact = (contact) => {
 const checkDuplicate = (name) => {
   const contacts = loadContact();
   return contacts.find((contact) => contact.name === name);
-}
+};
 
 // Delete contact
 const deleteContact = (id) => {
-    const contacts = loadContact();
-    const filteredContacts = contacts.filter((contact) => contact.id !== id);
-    saveContacts(filteredContacts);
-}
+  const contacts = loadContact();
+  const filteredContacts = contacts.filter((contact) => contact.id !== id);
+  saveContacts(filteredContacts);
+};
 
-module.exports = { loadContact, findContact, addContact, checkDuplicate, deleteContact };
+// Mengubah contacts
+const updateContacts = (newContact) => {
+  const contacts = loadContact();
+
+  // Temukan kontak lama berdasarkan ID atau nama (jika ID tidak ada di newContact)
+  const existingContact = contacts.find(
+    (contact) =>
+      contact.id === newContact.id || contact.name === newContact.oldName
+  );
+
+  // Jika kontak ditemukan, gunakan ID yang sama
+  if (existingContact) {
+    newContact.id = existingContact.id;
+  } else {
+    // Jika tidak ditemukan, buat ID baru (untuk case baru)
+    newContact.id = nanoid(16);
+  }
+
+  // Hapus properti oldName jika ada
+  if (newContact.oldName) {
+    delete newContact.oldName;
+  }
+
+  // Filter kontak lama (berdasarkan ID atau nama lama)
+  const filteredContacts = contacts.filter(
+    (contact) =>
+      contact.id !== newContact.id &&
+      (!newContact.oldName || contact.name !== newContact.oldName)
+  );
+
+  // Tambahkan kontak baru/update
+  filteredContacts.push(newContact);
+  saveContacts(filteredContacts);
+};
+module.exports = {
+  loadContact,
+  findContact,
+  addContact,
+  checkDuplicate,
+  deleteContact,
+  updateContacts,
+};
