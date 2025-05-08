@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
+                    <span class="text-xl font-semibold text-gray-800">LibraryApp</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-blue-600 font-medium border-b-2 border-blue-600 px-1">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">Books</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">Categories</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition">About</a>
+                </div>
+
+                <!-- User Section -->
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button class="p-1 rounded-full text-gray-600 hover:text-blue-600 focus:outline-none">
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="ml-4 relative">
+                        <button class="p-1 rounded-full text-gray-600 hover:text-blue-600 focus:outline-none">
+                            <i class="fas fa-bell text-lg"></i>
+                        </button>
+                        <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                    </div>
+                    <div class="ml-4 relative">
+                        <img class="h-8 w-8 rounded-full object-cover"
+                            src="https://randomuser.me/api/portraits/women/44.jpg" alt="User profile">
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="md:flex justify-between items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl font-bold mb-4">Discover Your Next Favorite Book</h1>
+                    <p class="text-lg mb-6">Explore our collection of thousands of books from various genres and
+                        authors.</p>
+                    <div class="flex">
+                        <input type="text" placeholder="Search books..."
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button class="bg-blue-800 px-6 py-2 rounded-r-lg hover:bg-blue-900 transition">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2 text-center">
+                    <i class="fas fa-book-open text-8xl opacity-30"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Featured Books -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Featured Books</h2>
+                <a href="#" class="text-blue-600 hover:underline">View all</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Book Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-blue-600"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">The Great Adventure</h3>
+                        <p class="text-gray-600 text-sm mb-2">John Doe</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(124)</span>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                            <i class="fas fa-plus mr-2"></i>Add to Collection
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-green-600"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Science Fundamentals</h3>
+                        <p class="text-gray-600 text-sm mb-2">Jane Smith</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(89)</span>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                            <i class="fas fa-plus mr-2"></i>Add to Collection
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-purple-600"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">History of the World</h3>
+                        <p class="text-gray-600 text-sm mb-2">Robert Johnson</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(256)</span>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                            <i class="fas fa-plus mr-2"></i>Add to Collection
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <div class="h-48 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-red-600"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Programming Basics</h3>
+                        <p class="text-gray-600 text-sm mb-2">Alice Williams</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(73)</span>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                            <i class="fas fa-plus mr-2"></i>Add to Collection
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Browse by Category</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-atom text-3xl text-blue-600 mb-2"></i>
+                    <p class="font-medium">Science</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-laptop-code text-3xl text-green-600 mb-2"></i>
+                    <p class="font-medium">Technology</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-landmark text-3xl text-yellow-600 mb-2"></i>
+                    <p class="font-medium">History</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-heart text-3xl text-red-600 mb-2"></i>
+                    <p class="font-medium">Romance</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-ghost text-3xl text-purple-600 mb-2"></i>
+                    <p class="font-medium">Horror</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition">
+                    <i class="fas fa-child text-3xl text-pink-600 mb-2"></i>
+                    <p class="font-medium">Children</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Recently Added -->
+        <section>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Recently Added</h2>
+                <a href="#" class="text-blue-600 hover:underline">View all</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Book 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition">
+                    <div class="w-1/3 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-book text-4xl text-blue-600"></i>
+                    </div>
+                    <div class="w-2/3 p-4">
+                        <h3 class="font-semibold text-lg mb-1">New Frontiers</h3>
+                        <p class="text-gray-600 text-sm mb-2">Michael Brown</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(42)</span>
+                        </div>
+                        <button class="text-blue-600 text-sm hover:underline">
+                            <i class="fas fa-info-circle mr-1"></i>Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition">
+                    <div class="w-1/3 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-book text-4xl text-green-600"></i>
+                    </div>
+                    <div class="w-2/3 p-4">
+                        <h3 class="font-semibold text-lg mb-1">Data Science 101</h3>
+                        <p class="text-gray-600 text-sm mb-2">Sarah Davis</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(37)</span>
+                        </div>
+                        <button class="text-blue-600 text-sm hover:underline">
+                            <i class="fas fa-info-circle mr-1"></i>Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex hover:shadow-lg transition">
+                    <div class="w-1/3 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-book text-4xl text-purple-600"></i>
+                    </div>
+                    <div class="w-2/3 p-4">
+                        <h3 class="font-semibold text-lg mb-1">Mystery Tales</h3>
+                        <p class="text-gray-600 text-sm mb-2">David Wilson</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(68)</span>
+                        </div>
+                        <button class="text-blue-600 text-sm hover:underline">
+                            <i class="fas fa-info-circle mr-1"></i>Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">LibraryApp</h3>
+                    <p class="text-gray-400">Discover your next favorite book with our extensive collection.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Categories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i> 123 Library St, Bookville
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-2"></i> (123) 456-7890
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i> info@libraryapp.com
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition text-xl">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-gray-400 text-sm">Subscribe to our newsletter</p>
+                        <div class="flex mt-2">
+                            <input type="email" placeholder="Your email"
+                                class="px-3 py-2 rounded-l text-gray-800 w-full">
+                            <button class="bg-blue-600 px-4 rounded-r hover:bg-blue-700 transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 LibraryApp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

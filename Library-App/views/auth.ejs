@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library App | Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .auth-container {
+            background-image: linear-gradient(to bottom right, rgba(14, 165, 233, 0.1), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-container {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-gray-800">
+    <div class="min-h-screen flex">
+        <!-- Left Side - Forms -->
+        <div class="flex-1 flex items-center justify-center p-8 auth-container">
+            <div class="w-full max-w-md form-container rounded-xl shadow-2xl overflow-hidden">
+                <!-- Tabs -->
+                <div class="flex border-b border-gray-200">
+                    <button id="login-tab"
+                        class="flex-1 py-4 px-6 text-center font-medium text-primary-600 border-b-2 border-primary-500">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                    <button id="register-tab"
+                        class="flex-1 py-4 px-6 text-center font-medium text-gray-500 hover:text-primary-500">
+                        <i class="fas fa-user-plus mr-2"></i>Register
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back</h2>
+                    <form action="/auth/login" method="POST">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">
+                                <i class="fas fa-envelope mr-2 text-primary-500"></i>Email Address
+                            </label>
+                            <input type="email" id="login-email" name="email" required
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                placeholder="your@email.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">
+                                <i class="fas fa-lock mr-2 text-primary-500"></i>Password
+                            </label>
+                            <div class="relative">
+                                <input type="password" id="login-password" name="password" required
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                    placeholder="••••••••">
+                                <button type="button"
+                                    class="absolute right-3 top-2.5 text-gray-400 hover:text-primary-500"
+                                    onclick="togglePasswordVisibility('login-password', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2 text-right">
+                                <a href="#" class="text-sm text-primary-600 hover:underline">Forgot
+                                    password?</a>
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Login
+                        </button>
+                    </form>
+                    <div class="mt-6 text-center">
+                        <p class="text-sm text-gray-600">Or login with</p>
+                        <div class="flex justify-center mt-3 space-x-4">
+                            <button type="button"
+                                class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button type="button"
+                                class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button type="button"
+                                class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register Form (Hidden by default) -->
+                <div id="register-form" class="p-8 hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Account</h2>
+
+                    <!-- Pesan ketika user berhasil registrasi -->
+                    <% if (message && message.length> 0) { %>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                            role="alert">
+                            <strong class="font-bold">Success!</strong>
+                            <span class="block sm:inline">
+                                <%= message %>
+                            </span>
+                        </div>
+                        <% } %>
+
+                            <form action="/auth/register" method="POST">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <label for="register-firstname"
+                                            class="block text-sm font-medium text-gray-700 mb-1">
+                                            <i class="fas fa-user mr-2 text-primary-500"></i>First Name
+                                        </label>
+                                        <input type="text" id="register-firstname" name="firstname" required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                            placeholder="John">
+                                        <% if (errors && errors.firstname) { %>
+                                            <p class="text-red-500 text-xs mt-1">
+                                                <%= error.firstname %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                    <div>
+                                        <label for="register-lastname"
+                                            class="block text-sm font-medium text-gray-700 mb-1">
+                                            <i class="fas fa-user mr-2 text-primary-500"></i>Last Name
+                                        </label>
+                                        <input type="text" id="register-lastname" name="lastname" required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                            placeholder="Doe">
+                                        <% if (errors && errors.lastname) { %>
+                                            <p class="text-red-500 text-xs mt-1">
+                                                <%= error.lastname %>
+                                            </p>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="register-email" class="block text-sm font-medium text-gray-700 mb-1">
+                                        <i class="fas fa-envelope mr-2 text-primary-500"></i>Email Address
+                                    </label>
+                                    <input type="email" id="register-email" name="email" required
+                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                        placeholder="your@email.com">
+                                    <% if (errors && errors.email) { %>
+                                        <p class="text-red-500 text-xs mt-1">
+                                            <%= error.email %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="register-password" class="block text-sm font-medium text-gray-700 mb-1">
+                                        <i class="fas fa-lock mr-2 text-primary-500"></i>Password
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="register-password" name="password" required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                            placeholder="••••••••">
+                                        <button type="button"
+                                            class="absolute right-3 top-2.5 text-gray-400 hover:text-primary-500"
+                                            onclick="togglePasswordVisibility('register-password', this)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <% if (errors && errors.password) { %>
+                                        <p class="text-red-500 text-xs mt-1">
+                                            <%= error.password %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="register-confirm-password"
+                                        class="block text-sm font-medium text-gray-700 mb-1">
+                                        <i class="fas fa-lock mr-2 text-primary-500"></i>Confirm Password
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="register-confirm-password" name="confirm_password"
+                                            required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
+                                            placeholder="••••••••">
+                                        <button type="button"
+                                            class="absolute right-3 top-2.5 text-gray-400 hover:text-primary-500"
+                                            onclick="togglePasswordVisibility('register-confirm-password', this)">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-6 flex items-center">
+                                    <input type="checkbox" id="terms" name="terms" required
+                                        class="w-4 h-4 text-primary-600 rounded border-gray-300 focus:ring-primary-500">
+                                    <label for="terms" class="ml-2 block text-sm text-gray-700">
+                                        I agree to the <a href="#" class="text-primary-600 hover:underline">Terms of
+                                            Service</a>
+                                        and <a href="#" class="text-primary-600 hover:underline">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+                                    <i class="fas fa-user-plus mr-2"></i>Register
+                                </button>
+                            </form>
+                            <div class="mt-6 text-center">
+                                <p class="text-sm text-gray-600">Or register with</p>
+                                <div class="flex justify-center mt-3 space-x-4">
+                                    <button type="button"
+                                        class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </button>
+                                    <button type="button"
+                                        class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition">
+                                        <i class="fab fa-google"></i>
+                                    </button>
+                                    <button type="button"
+                                        class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition">
+                                        <i class="fab fa-github"></i>
+                                    </button>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Decorative (Visible on larger screens) -->
+        <div
+            class="hidden lg:block lg:w-1/2 bg-gradient-to-br from-primary-500 to-primary-700 p-12 flex flex-col justify-center text-white">
+            <div class="max-w-md mx-auto">
+                <div class="mb-8">
+                    <i class="fas fa-book-open text-5xl mb-4"></i>
+                    <h1 class="text-4xl font-bold mb-2">Library App</h1>
+                    <p class="text-xl opacity-90">Discover your next favorite book</p>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary-400 rounded-full p-2 mr-4">
+                            <i class="fas fa-search text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Explore Collections</h3>
+                            <p class="opacity-90">Access thousands of books from various genres</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary-400 rounded-full p-2 mr-4">
+                            <i class="fas fa-bookmark text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Save Favorites</h3>
+                            <p class="opacity-90">Bookmark your favorite books for easy access</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-primary-400 rounded-full p-2 mr-4">
+                            <i class="fas fa-bell text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Get Notified</h3>
+                            <p class="opacity-90">Receive alerts for due dates and new arrivals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and register forms
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('text-primary-600', 'border-primary-500');
+            loginTab.classList.remove('text-gray-500');
+            registerTab.classList.add('text-gray-500');
+            registerTab.classList.remove('text-primary-600', 'border-primary-500');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('text-primary-600', 'border-primary-500');
+            registerTab.classList.remove('text-gray-500');
+            loginTab.classList.add('text-gray-500');
+            loginTab.classList.remove('text-primary-600', 'border-primary-500');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        // Toggle password visibility
+        function togglePasswordVisibility(inputId, button) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                input.type = 'password';
+                button.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+    </script>
+</body>
+
+</html>
