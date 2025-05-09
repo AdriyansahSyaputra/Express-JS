@@ -1,0 +1,45 @@
+<nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <i class="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
+                <span class="text-xl font-semibold text-gray-800">LibraryApp</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="text-blue-600 font-medium border-b-2 border-blue-600 px-1">Home</a>
+                <a href="/books" class="text-gray-600 hover:text-blue-600 transition">Books</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition">Categories</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition">About</a>
+            </div>
+
+            <!-- User Section -->
+            <div class="flex items-center">
+                <div class="relative">
+                    <button class="p-1 rounded-full text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                </div>
+                <div class="ml-4 relative">
+                    <button class="p-1 rounded-full text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bell text-lg"></i>
+                    </button>
+                    <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                </div>
+                <div class="ml-4 relative">
+                    <img class="h-8 w-8 rounded-full object-cover"
+                        src="https://randomuser.me/api/portraits/women/44.jpg" alt="User profile">
+                </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

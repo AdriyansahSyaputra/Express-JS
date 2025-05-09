@@ -1,0 +1,195 @@
+<%- include('layouts/header') %>
+    <%- include('layouts/navbar') %>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Back Button -->
+            <button onclick="history.back()" class="inline-block items-center text-blue-600 hover:text-blue-800 mb-6">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Koleksi
+            </>
+
+            <!-- Book Detail Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <!-- Book Cover (Left Side) -->
+                    <div class="md:w-1/3 bg-gray-100 flex items-center justify-center p-8">
+                        <div class="relative w-full h-96 md:h-auto">
+                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                alt="Book Cover" class="w-full h-full object-contain rounded-lg shadow-md">
+                            <div
+                                class="absolute -bottom-4 -right-4 bg-yellow-400 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold shadow-md">
+                                <i class="fas fa-star mr-1"></i> 4.8
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book Info (Right Side) -->
+                    <div class="md:w-2/3 p-8">
+                        <!-- Status Badge -->
+                        <span
+                            class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                            <i class="fas fa-check-circle mr-1"></i> Tersedia
+                        </span>
+
+                        <!-- Title -->
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">The Great Adventure</h1>
+
+                        <!-- Author & Year -->
+                        <div class="flex items-center text-gray-600 mb-6">
+                            <span class="mr-4">
+                                <i class="fas fa-user-edit mr-1"></i> John Doe
+                            </span>
+                            <span>
+                                <i class="fas fa-calendar-alt mr-1"></i> 2022
+                            </span>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                Petualangan
+                            </span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
+                                Fiksi
+                            </span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
+                                Best Seller
+                            </span>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Deskripsi Buku</h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                "The Great Adventure" adalah kisah epik tentang perjalanan seorang penjelajah muda
+                                yang
+                                menemukan rahasia kuno di hutan terpencil.
+                                Buku ini menggabungkan elemen petualangan, misteri, dan pertumbuhan pribadi yang
+                                akan
+                                membuat
+                                pembaca terpikat dari halaman pertama.
+                                <br><br>
+                                Dengan karakter yang kuat dan plot yang menegangkan, John Doe membawa kita ke dunia
+                                yang
+                                penuh
+                                dengan keajaiban dan bahaya.
+                                Buku ini telah menerima pujian kritis dan menjadi best seller internasional dalam
+                                waktu
+                                singkat.
+                            </p>
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-8">
+                            <div>
+                                <p class="text-sm text-gray-500">Penerbit</p>
+                                <p class="font-medium">Adventure Press</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Halaman</p>
+                                <p class="font-medium">342</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Bahasa</p>
+                                <p class="font-medium">Indonesia</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Format</p>
+                                <p class="font-medium">Hardcover</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition flex-1 flex items-center justify-center">
+                                <i class="fas fa-plus mr-2"></i> Tambah ke Koleksi
+                            </button>
+                            <button
+                                class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-6 rounded-lg transition flex-1 flex items-center justify-center">
+                                <i class="fas fa-edit mr-2"></i> Edit Buku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Books Section -->
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Buku Terkait</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Related Book 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div class="h-40 bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-book text-5xl text-blue-600"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-1">Mystery Island</h3>
+                            <p class="text-gray-600 text-sm mb-2">Jane Smith</p>
+                            <div class="flex items-center text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Book 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div class="h-40 bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-book text-5xl text-green-600"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-1">Lost Treasure</h3>
+                            <p class="text-gray-600 text-sm mb-2">Robert Brown</p>
+                            <div class="flex items-center text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Book 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div class="h-40 bg-yellow-100 flex items-center justify-center">
+                            <i class="fas fa-book text-5xl text-yellow-600"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-1">Jungle Quest</h3>
+                            <p class="text-gray-600 text-sm mb-2">Alice Green</p>
+                            <div class="flex items-center text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Book 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div class="h-40 bg-purple-100 flex items-center justify-center">
+                            <i class="fas fa-book text-5xl text-purple-600"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold mb-1">Ocean Mysteries</h3>
+                            <p class="text-gray-600 text-sm mb-2">David Wilson</p>
+                            <div class="flex items-center text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('layouts/footer') %>

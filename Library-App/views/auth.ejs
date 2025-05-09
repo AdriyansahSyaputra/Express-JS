@@ -85,7 +85,12 @@
                             </label>
                             <input type="email" id="login-email" name="email" required
                                 class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
-                                placeholder="your@email.com">
+                                value="<%= old ? old.email : '' %>" placeholder="your@email.com">
+                            <% if (errors && errors.email) { %>
+                                <p class="text-red-500 text-xs mt-1">
+                                    <%= errors.email %>
+                                </p>
+                                <% } %>
                         </div>
                         <div class="mb-6">
                             <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">
@@ -101,10 +106,15 @@
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </div>
-                            <div class="mt-2 text-right">
-                                <a href="#" class="text-sm text-primary-600 hover:underline">Forgot
-                                    password?</a>
-                            </div>
+                            <% if (errors && errors.password) { %>
+                                <p class="text-red-500 text-xs mt-1">
+                                    <%= errors.password %>
+                                </p>
+                                <% } %>
+                                    <div class="mt-2 text-right">
+                                        <a href="#" class="text-sm text-primary-600 hover:underline">Forgot
+                                            password?</a>
+                                    </div>
                         </div>
                         <button type="submit"
                             class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
@@ -152,12 +162,13 @@
                                             class="block text-sm font-medium text-gray-700 mb-1">
                                             <i class="fas fa-user mr-2 text-primary-500"></i>First Name
                                         </label>
-                                        <input type="text" id="register-firstname" name="firstname" required
+                                        <input type="text" id="register-firstname"
+                                            value="<%= old ? old.firstname : '' %>" name="firstname" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
                                             placeholder="John">
                                         <% if (errors && errors.firstname) { %>
                                             <p class="text-red-500 text-xs mt-1">
-                                                <%= error.firstname %>
+                                                <%= errors.firstname %>
                                             </p>
                                             <% } %>
                                     </div>
@@ -166,12 +177,13 @@
                                             class="block text-sm font-medium text-gray-700 mb-1">
                                             <i class="fas fa-user mr-2 text-primary-500"></i>Last Name
                                         </label>
-                                        <input type="text" id="register-lastname" name="lastname" required
+                                        <input type="text" id="register-lastname" value="<%= old ? old.lastname : '' %>"
+                                            name="lastname" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
                                             placeholder="Doe">
                                         <% if (errors && errors.lastname) { %>
                                             <p class="text-red-500 text-xs mt-1">
-                                                <%= error.lastname %>
+                                                <%= errors.lastname %>
                                             </p>
                                             <% } %>
                                     </div>
@@ -180,12 +192,13 @@
                                     <label for="register-email" class="block text-sm font-medium text-gray-700 mb-1">
                                         <i class="fas fa-envelope mr-2 text-primary-500"></i>Email Address
                                     </label>
-                                    <input type="email" id="register-email" name="email" required
+                                    <input type="email" id="register-email" name="email"
+                                        value="<%= old ? old.email : '' %>" required
                                         class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition"
                                         placeholder="your@email.com">
                                     <% if (errors && errors.email) { %>
                                         <p class="text-red-500 text-xs mt-1">
-                                            <%= error.email %>
+                                            <%= errors.email %>
                                         </p>
                                         <% } %>
                                 </div>
@@ -205,7 +218,7 @@
                                     </div>
                                     <% if (errors && errors.password) { %>
                                         <p class="text-red-500 text-xs mt-1">
-                                            <%= error.password %>
+                                            <%= errors.password %>
                                         </p>
                                         <% } %>
                                 </div>
@@ -225,6 +238,11 @@
                                             <i class="fas fa-eye"></i>
                                         </button>
                                     </div>
+                                    <% if (errors && errors.confirmPassword) { %>
+                                        <p class="text-red-500 text-xs mt-1">
+                                            <%= errors.confirmPassword %>
+                                        </p>
+                                        <% } %>
                                 </div>
                                 <div class="mb-6 flex items-center">
                                     <input type="checkbox" id="terms" name="terms" required

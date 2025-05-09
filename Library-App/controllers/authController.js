@@ -23,12 +23,28 @@ const register = async (req, res) => {
     errors.email = "Email already used!";
   }
 
+  // Cek format email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errors.email = "Invalid email format!";
+  }
+
+  // Cek confirm password
+  if (password !== req.body.confirmPassword) {
+    errors.confirmPassword = "Password does not match!";
+  }
+
   if (password.length < 8) {
     errors.password = "Password must be at least 8 characters";
   }
 
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ errors });
+    return res.render("auth", {
+      title: "Authentication",
+      errors,
+      message: null,
+      old: req.body,
+    });
   }
 
   // Hash password
@@ -54,20 +70,25 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   const users = loadUsers();
 
-  // Check credentials
-  const user = users.find((user) => user.email === email);
+  const errors = {};
+
+  const user = users.find((u) => u.email === email);
   if (!user) {
-    res.status(400).json({ message: "Invalid credentials!" });
-    res.redirect("/auth");
-    return;
+    errors.email = "Email not found!";
+  } else {
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      errors.password = "Invalid credentials!";
+    }
   }
 
-  // Check password
-  const validPassword = await bcrypt.compare(password, user.password);
-  if (!validPassword) {
-    res.status(400).json({ message: "Invalid credentials!" });
-    res.redirect("/auth");
-    return;
+  if (Object.keys(errors).length > 0) {
+    return res.render("auth", {
+      title: "Authentication",
+      errors,
+      message: null,
+      old: req.body,
+    });
   }
 
   saveUsers(users);
