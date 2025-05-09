@@ -37,100 +37,36 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Book Card 1 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 bg-blue-100 flex items-center justify-center">
-                            <i class="fas fa-book text-6xl text-blue-600"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">The Great Adventure</h3>
-                            <p class="text-gray-600 text-sm mb-2">John Doe</p>
-                            <div class="flex items-center mb-3">
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <span class="text-gray-600 text-sm ml-2">(124)</span>
+                    <% books.forEach(book=> { %>
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                            <div class="h-48 bg-blue-100 flex items-center justify-center">
+                                <img src="/img/cover/<%= book.cover %>" alt="<%= book.title %>" class="h-full">
                             </div>
-                            <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-                                <i class="fas fa-plus mr-2"></i>Add to Collection
-                            </button>
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg mb-1">
+                                    <%= book.title %>
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-2">
+                                    <%= book.author %>
+                                </p>
+                                <div class="flex items-center mb-3">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="text-gray-600 text-sm ml-2">(124)</span>
+                                </div>
+                                <a href="/book/<%= book.title.toLowerCase().replace(/\s+/g, '-') %>/<%= book.id %>"
+                                    class="flex items-center justify-center w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fa-solid fa-book-open mr-1"></i> See Details
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                        <% }) %>
 
-                    <!-- Book Card 2 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 bg-green-100 flex items-center justify-center">
-                            <i class="fas fa-book text-6xl text-green-600"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">Science Fundamentals</h3>
-                            <p class="text-gray-600 text-sm mb-2">Jane Smith</p>
-                            <div class="flex items-center mb-3">
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <span class="text-gray-600 text-sm ml-2">(89)</span>
-                            </div>
-                            <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-                                <i class="fas fa-plus mr-2"></i>Add to Collection
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 3 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 bg-purple-100 flex items-center justify-center">
-                            <i class="fas fa-book text-6xl text-purple-600"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">History of the World</h3>
-                            <p class="text-gray-600 text-sm mb-2">Robert Johnson</p>
-                            <div class="flex items-center mb-3">
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="text-gray-600 text-sm ml-2">(256)</span>
-                            </div>
-                            <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-                                <i class="fas fa-plus mr-2"></i>Add to Collection
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Book Card 4 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                        <div class="h-48 bg-red-100 flex items-center justify-center">
-                            <i class="fas fa-book text-6xl text-red-600"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg mb-1">Programming Basics</h3>
-                            <p class="text-gray-600 text-sm mb-2">Alice Williams</p>
-                            <div class="flex items-center mb-3">
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <span class="text-gray-600 text-sm ml-2">(73)</span>
-                            </div>
-                            <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-                                <i class="fas fa-plus mr-2"></i>Add to Collection
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </section>
 

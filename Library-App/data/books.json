@@ -1,0 +1,54 @@
+[
+  {
+    "id": "HJWhWUHgeg14WJI",
+    "title": "The Big Deal",
+    "author": "John Doe",
+    "year": 2022,
+    "category": "Business",
+    "description": "A book about big deals in the business world.",
+    "publisher": "ABC Publishing",
+    "language": "English",
+    "pages": 256,
+    "format": "Hardcover",
+    "cover": "the-big-deal.jpg"
+  },
+  {
+    "id": "Kk3hWUHgeg14WJI",
+    "title": "Elastic Habits",
+    "author": "Jone Doe",
+    "year": 2023,
+    "category": "Self Help",
+    "description": "A book about how to become a better person.",
+    "publisher": "XYZ Publishing",
+    "language": "English",
+    "pages": 256,
+    "format": "Hardcover",
+    "cover": "elastic-habits.jpg"
+  },
+  {
+    "id": "PAwienlaksd12",
+    "title": "Leadership",
+    "author": "Budi Sentosa",
+    "year": 2024,
+    "category": "Self Improvment",
+    "description": "A book about how to become a better leader.",
+    "publisher": "PUBI Publishing",
+    "language": "English",
+    "pages": 217,
+    "format": "Hardcover",
+    "cover": "leadership.jpg"
+  },
+  {
+    "id": "YUZuaidn@12jn",
+    "title": "Starting a Business",
+    "author": "Jamal Musiala",
+    "year": 2025,
+    "category": "Business",
+    "description": "A book about how to start a business.",
+    "publisher": "YUZU Publishing",
+    "language": "English",
+    "pages": 156,
+    "format": "Hardcover",
+    "cover": "starting-a-business.jpg"
+  }
+]

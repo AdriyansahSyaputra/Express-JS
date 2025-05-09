@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { register, login } = require("../controllers/authController");
+const { loadBooks, findBook } = require("../utils/load-data");
 
 // Auth Routes
 router.get("/auth", (req, res) => {
@@ -17,7 +18,8 @@ router.post("/auth/login", login);
 
 // Home routes
 router.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
+  const books = loadBooks();
+  res.render("index", { title: "Home", books });
 });
 
 // Edit book
@@ -27,12 +29,14 @@ router.get("/edit", (req, res) => {
 
 // books
 router.get("/books", (req, res) => {
-  res.render("books", { title: "Books" });
-})
+  const books = loadBooks();
+  res.render("books", { title: "Books", books });
+});
 
 // Detail book
-router.get("/detail", (req, res) => {
-  res.render("detail-book", { title: "Detail" });
+router.get("/book/:title/:id", (req, res) => {
+  const book = findBook(req.params.id);
+  res.render("detail-book", { title: "Detail", book });
 });
 
 module.exports = router;
