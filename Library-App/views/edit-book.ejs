@@ -9,7 +9,7 @@
                 </h1>
                 <button onclick="history.back()" type="button" class="text-blue-600 hover:text-blue-800">
                     <i class="fas fa-times"></i>
-                </>
+                </button>
             </div>
 
             <!-- Edit Form -->
@@ -59,8 +59,9 @@
                                         <label for="judul" class="block text-sm font-medium text-gray-700 mb-1">
                                             Judul Buku <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="text" id="judul" name="judul" value="The Great Adventure" required
-                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                                        <input type="text" id="judul" name="judul" required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                            value="<%= book.title %>">
                                     </div>
 
                                     <!-- Penulis -->
@@ -68,8 +69,9 @@
                                         <label for="penulis" class="block text-sm font-medium text-gray-700 mb-1">
                                             Penulis <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="text" id="penulis" name="penulis" value="John Doe" required
-                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                                        <input type="text" id="penulis" name="penulis" required
+                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                            value="<%= book.author %>">
                                     </div>
 
                                     <!-- Tahun Terbit -->
@@ -77,8 +79,8 @@
                                         <label for="tahun" class="block text-sm font-medium text-gray-700 mb-1">
                                             Tahun Terbit <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="number" id="tahun" name="tahun" value="2022" min="1900" max="2099"
-                                            required
+                                        <input type="number" id="tahun" name="tahun" value="<%= book.year %>" step="1"
+                                            min="1900" max="2099" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
@@ -87,7 +89,7 @@
                                         <label for="penerbit" class="block text-sm font-medium text-gray-700 mb-1">
                                             Penerbit
                                         </label>
-                                        <input type="text" id="penerbit" name="penerbit" value="Adventure Press"
+                                        <input type="text" id="penerbit" name="penerbit" value="<%= book.publisher %>"
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
@@ -96,7 +98,8 @@
                                         <label for="halaman" class="block text-sm font-medium text-gray-700 mb-1">
                                             Jumlah Halaman
                                         </label>
-                                        <input type="number" id="halaman" name="halaman" value="342" min="1"
+                                        <input type="number" id="halaman" name="halaman" value="<%= book.pages %>"
+                                            step="1" min="1"
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
@@ -105,12 +108,15 @@
                                         <label for="bahasa" class="block text-sm font-medium text-gray-700 mb-1">
                                             Bahasa
                                         </label>
-                                        <select id="bahasa" name="bahasa"
-                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                                            <option value="indonesia" selected>Indonesia</option>
-                                            <option value="inggris">Inggris</option>
-                                            <option value="lainnya">Lainnya</option>
+                                        <select id="bahasa" name="bahasa" class="...">
+                                            <option value="indonesia" <%=book.language==='indonesia' ? 'selected' : ''
+                                                %>>Indonesia</option>
+                                            <option value="inggris" <%=book.language==='inggris' ? 'selected' : '' %>
+                                                >Inggris</option>
+                                            <option value="lainnya" <%=book.language==='lainnya' ? 'selected' : '' %>
+                                                >Lainnya</option>
                                         </select>
+
                                     </div>
 
                                     <!-- Format -->
@@ -118,12 +124,15 @@
                                         <label for="format" class="block text-sm font-medium text-gray-700 mb-1">
                                             Format
                                         </label>
-                                        <select id="format" name="format"
-                                            class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                                            <option value="hardcover" selected>Hardcover</option>
-                                            <option value="paperback">Paperback</option>
-                                            <option value="ebook">E-book</option>
+                                        <select id="format" name="format" class="...">
+                                            <option value="hardcover" <%=book.format==='hardcover' ? 'selected' : '' %>
+                                                >Hardcover</option>
+                                            <option value="paperback" <%=book.format==='paperback' ? 'selected' : '' %>
+                                                >Paperback</option>
+                                            <option value="ebook" <%=book.format==='ebook' ? 'selected' : '' %>>E-book
+                                            </option>
                                         </select>
+
                                     </div>
                                 </div>
                             </div>
@@ -142,19 +151,15 @@
                                         </label>
                                         <div class="space-y-2">
                                             <div class="flex items-center">
-                                                <input id="tersedia" name="status" type="radio" value="tersedia" checked
-                                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500">
-                                                <label for="tersedia" class="ml-2 block text-sm text-gray-700">
-                                                    Tersedia
-                                                </label>
+                                                <input id="tersedia" name="status" type="radio" value="tersedia"
+                                                    <%=book.status==='tersedia' ? 'checked' : '' %>
+                                                class="..." /> <label for="tersedia">Tersedia</label>
                                             </div>
                                             <div class="flex items-center">
                                                 <input id="tidak-tersedia" name="status" type="radio"
-                                                    value="tidak-tersedia"
-                                                    class="h-4 w-4 text-blue-600 focus:ring-blue-500">
-                                                <label for="tidak-tersedia" class="ml-2 block text-sm text-gray-700">
-                                                    Tidak Tersedia
-                                                </label>
+                                                    value="tidak-tersedia" <%=book.status==='tidak-tersedia' ? 'checked'
+                                                    : '' %> class="..." />
+                                                <label for="tidak-tersedia">Tidak Tersedia</label>
                                             </div>
                                         </div>
                                     </div>
@@ -165,26 +170,35 @@
                                             Kategori
                                         </label>
                                         <div class="flex flex-wrap gap-2">
-                                            <label class="inline-flex items-center">
-                                                <input type="checkbox"
-                                                    class="h-4 w-4 text-blue-600 rounded border-gray-300" checked>
-                                                <span class="ml-2 text-sm text-gray-700">Petualangan</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="checkbox"
-                                                    class="h-4 w-4 text-blue-600 rounded border-gray-300" checked>
-                                                <span class="ml-2 text-sm text-gray-700">Fiksi</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="checkbox"
-                                                    class="h-4 w-4 text-blue-600 rounded border-gray-300">
-                                                <span class="ml-2 text-sm text-gray-700">Best Seller</span>
-                                            </label>
-                                            <label class="inline-flex items-center">
-                                                <input type="checkbox"
-                                                    class="h-4 w-4 text-blue-600 rounded border-gray-300">
-                                                <span class="ml-2 text-sm text-gray-700">Fantasi</span>
-                                            </label>
+                                            <% const selectedCategories=book.category || []; %>
+
+                                                <label class="inline-flex items-center">
+                                                    <input type="checkbox" name="category" value="Business"
+                                                        <%=selectedCategories.includes("Business") ? 'checked' : ''
+                                                        %> class="..." />
+                                                    <span class="ml-2 text-sm text-gray-700">Business</span>
+                                                </label>
+
+                                                <label class="inline-flex items-center">
+                                                    <input type="checkbox" name="category" value="Fiksi"
+                                                        <%=selectedCategories.includes("Fiksi") ? 'checked' : '' %>
+                                                    class="..." />
+                                                    <span class="ml-2 text-sm text-gray-700">Fiksi</span>
+                                                </label>
+
+                                                <label class="inline-flex items-center">
+                                                    <input type="checkbox" name="category" value="Self Help"
+                                                        <%=selectedCategories.includes("Self Help") ? 'checked' : ''
+                                                        %> class="..." />
+                                                    <span class="ml-2 text-sm text-gray-700">Self Help</span>
+                                                </label>
+
+                                                <label class="inline-flex items-center">
+                                                    <input type="checkbox" name="category" value="Fantasi"
+                                                        <%=selectedCategories.includes("Fantasi") ? 'checked' : ''
+                                                        %> class="..." />
+                                                    <span class="ml-2 text-sm text-gray-700">Fantasi</span>
+                                                </label>
                                         </div>
                                     </div>
                                 </div>
@@ -199,9 +213,7 @@
                                     Deskripsi Buku <span class="text-red-500">*</span>
                                 </label>
                                 <textarea id="deskripsi" name="deskripsi" rows="5" required
-                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">"The Great Adventure" adalah kisah epik tentang perjalanan seorang penjelajah muda yang menemukan rahasia kuno di hutan terpencil. Buku ini menggabungkan elemen petualangan, misteri, dan pertumbuhan pribadi yang akan membuat pembaca terpikat dari halaman pertama.
-
-Dengan karakter yang kuat dan plot yang menegangkan, John Doe membawa kita ke dunia yang penuh dengan keajaiban dan bahaya. Buku ini telah menerima pujian kritis dan menjadi best seller internasional dalam waktu singkat.</textarea>
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"><%= book.description %></textarea>
                             </div>
 
                             <!-- Action Buttons -->

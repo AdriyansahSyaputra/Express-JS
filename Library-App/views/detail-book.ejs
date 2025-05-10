@@ -13,8 +13,8 @@
                     <!-- Book Cover (Left Side) -->
                     <div class="md:w-1/3 bg-gray-100 flex items-center justify-center p-8">
                         <div class="relative w-full h-96 md:h-auto">
-                            <img src="/img/cover/<%= book.cover %>"
-                                alt="<%= book.title %>" class="w-full h-full object-contain rounded-lg shadow-md">
+                            <img src="<%= imagePath %>" alt="<%= book.title %>"
+                                class="w-full h-full object-contain rounded-lg shadow-md">
                             <div
                                 class="absolute -bottom-4 -right-4 bg-yellow-400 text-yellow-800 px-3 py-1 rounded-full text-sm font-bold shadow-md">
                                 <i class="fas fa-star mr-1"></i> 4.8
@@ -31,30 +31,44 @@
                         </span>
 
                         <!-- Title -->
-                        <h1 class="text-3xl font-bold text-gray-800 mb-2"><%= book.title %></h1>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                            <%= book.title %>
+                        </h1>
 
                         <!-- Author & Year -->
                         <div class="flex items-center text-gray-600 mb-6">
                             <span class="mr-4">
-                                <i class="fas fa-user-edit mr-1"></i> <%= book.author %>
+                                <i class="fas fa-user-edit mr-1"></i>
+                                <%= book.author %>
                             </span>
                             <span>
-                                <i class="fas fa-calendar-alt mr-1"></i> <%= book.year %>
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                <%= book.year %>
                             </span>
                         </div>
 
                         <!-- Categories -->
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-                                <%= book.category %>
-                            </span>
+                            <% if (Array.isArray(book.category)) { %>
+                                <% book.category.forEach(function(cat) { %>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                        <%= cat %>
+                                    </span>
+                                    <% }); %>
+                                        <% } else { %>
+                                            <span
+                                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
+                                                <%= book.category %>
+                                            </span>
+                                            <% } %>
                         </div>
+
 
                         <!-- Description -->
                         <div class="mb-8">
                             <h3 class="text-lg font-semibold text-gray-800 mb-2">Deskripsi Buku</h3>
                             <p class="text-gray-600 leading-relaxed">
-                              <%= book.description %>
+                                <%= book.description %>
                             </p>
                         </div>
 
@@ -62,19 +76,27 @@
                         <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-8">
                             <div>
                                 <p class="text-sm text-gray-500">Penerbit</p>
-                                <p class="font-medium"><%= book.publisher %></p>
+                                <p class="font-medium">
+                                    <%= book.publisher %>
+                                </p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Halaman</p>
-                                <p class="font-medium"><%= book.pages %></p>
+                                <p class="font-medium">
+                                    <%= book.pages %>
+                                </p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Bahasa</p>
-                                <p class="font-medium"><%= book.language %></p>
+                                <p class="font-medium">
+                                    <%= book.language %>
+                                </p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500">Format</p>
-                                <p class="font-medium"><%= book.format %></p>
+                                <p class="font-medium">
+                                    <%= book.format.charAt(0).toUpperCase() + book.format.slice(1) %>
+                                </p>
                             </div>
                         </div>
 
