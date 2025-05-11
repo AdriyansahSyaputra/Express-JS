@@ -49,54 +49,58 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <% books.forEach((book, i) => { %>
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    <%- i + 1 %>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div
-                                            class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-                                            <i class="fas fa-book text-blue-600"></i>
+                            <% books.forEach((book, i)=> { %>
+                                <tr class="hover:bg-gray-50 transition">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        <%- i + 1 %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                                <i class="fas fa-book text-blue-600"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    <%= book.title %>
+                                                </div>
+                                                <div class="text-sm text-gray-500">
+                                                    <%= book.category %>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <div class="text-sm font-medium text-gray-900"><%= book.title %></div>
-                                            <div class="text-sm text-gray-500"><%= book.category %></div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <%= book.author %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <%= book.year %>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            <i class="fas fa-check-circle mr-1"></i> Tersedia
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <div class="flex space-x-2">
+                                            <a href="/book/<%= book.title %>/<%= book.id %>"
+                                                class="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50 transition">
+                                                <i class="fas fa-info-circle"></i>
+                                            </a>
+                                            <a href="/book/edit/<%= book.id %>"
+                                                class="text-yellow-600 hover:text-yellow-900 p-1 rounded hover:bg-yellow-50 transition">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="/book/delete/<%= book.id %>"
+                                                class="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50 transition">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <%= book.author %>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <%= book.year %>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        <i class="fas fa-check-circle mr-1"></i> Tersedia
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <div class="flex space-x-2">
-                                        <a href="detail-buku.html"
-                                            class="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50 transition">
-                                            <i class="fas fa-info-circle"></i>
-                                        </a>
-                                        <a href="/book/edit/<%= book.id %>"
-                                            class="text-yellow-600 hover:text-yellow-900 p-1 rounded hover:bg-yellow-50 transition">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <button
-                                            class="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50 transition">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                         
-                            <% }) %>
+                                    </td>
+                                </tr>
+
+                                <% }) %>
                         </tbody>
                     </table>
                 </div>

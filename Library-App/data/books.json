@@ -40,33 +40,5 @@
     "pages": 217,
     "format": "Hardcover",
     "cover": "leadership.jpg"
-  },
-  {
-    "id": "YUZuaidn@12jn",
-    "title": "Starting a Business",
-    "author": "Jamal Musiala",
-    "year": 2025,
-    "category": "Business",
-    "status": "tersedia",
-    "description": "A book about how to start a business.",
-    "publisher": "YUZU Publishing",
-    "language": "English",
-    "pages": 156,
-    "format": "Hardcover",
-    "cover": "starting-a-business.jpg"
-  },
-  {
-    "id": "rAfOmnHc42dkta0X",
-    "title": "Manage Your Career",
-    "author": "Prabowo",
-    "year": 2025,
-    "publisher": "Gramedia",
-    "pages": 225,
-    "language": "inggris",
-    "format": "ebook",
-    "description": "Lorem ipsum dolor amit dlost",
-    "category": ["Business", "Self Help"],
-    "status": "tersedia",
-    "cover": "cover-1746858640431.jpg"
   }
 ]

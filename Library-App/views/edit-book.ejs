@@ -14,7 +14,7 @@
 
             <!-- Edit Form -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <form>
+                <form action="/book/update/<%= book.id %>" method="POST" enctype="multipart/form-data">
                     <div class="md:flex">
                         <!-- Left Column - Book Cover -->
                         <div class="md:w-1/3 p-8 bg-gray-50">
@@ -29,7 +29,8 @@
                                             <label
                                                 class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
                                                 <span>Upload file</span>
-                                                <input type="file" class="sr-only">
+                                                <input type="file" name="cover" id="coverInput" class="sr-only"
+                                                    accept="image/*">
                                             </label>
                                             <p class="pl-1">atau drag and drop</p>
                                         </div>
@@ -38,9 +39,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="mt-4 flex justify-center">
-                                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                        alt="Current Cover" class="h-40 object-contain rounded-lg shadow">
+                                <div class="mt-6 flex justify-center">
+                                    <img id="previewImage" src="<%= imagePath %>" alt="Preview Cover"
+                                        class="h-64 w-auto object-contain rounded-lg shadow-md border border-gray-200" />
                                 </div>
                             </div>
                         </div>
@@ -54,61 +55,61 @@
                                 </h3>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <!-- Judul Buku -->
+                                    <!-- Title -->
                                     <div class="col-span-2">
-                                        <label for="judul" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Judul Buku <span class="text-red-500">*</span>
+                                        <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Title <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="text" id="judul" name="judul" required
+                                        <input type="text" id="title" name="title" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                                             value="<%= book.title %>">
                                     </div>
 
-                                    <!-- Penulis -->
+                                    <!-- Author -->
                                     <div>
-                                        <label for="penulis" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Penulis <span class="text-red-500">*</span>
+                                        <label for="author" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Author <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="text" id="penulis" name="penulis" required
+                                        <input type="text" id="author" name="author" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
                                             value="<%= book.author %>">
                                     </div>
 
-                                    <!-- Tahun Terbit -->
+                                    <!-- Year -->
                                     <div>
-                                        <label for="tahun" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Tahun Terbit <span class="text-red-500">*</span>
+                                        <label for="year" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Year <span class="text-red-500">*</span>
                                         </label>
-                                        <input type="number" id="tahun" name="tahun" value="<%= book.year %>" step="1"
+                                        <input type="number" id="year" name="year" value="<%= book.year %>" step="1"
                                             min="1900" max="2099" required
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
-                                    <!-- Penerbit -->
+                                    <!-- Publisher -->
                                     <div>
-                                        <label for="penerbit" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Penerbit
+                                        <label for="publisher" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Publisher
                                         </label>
-                                        <input type="text" id="penerbit" name="penerbit" value="<%= book.publisher %>"
+                                        <input type="text" id="publisher" name="publisher" value="<%= book.publisher %>"
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
-                                    <!-- Jumlah Halaman -->
+                                    <!-- Pages -->
                                     <div>
-                                        <label for="halaman" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Jumlah Halaman
+                                        <label for="pages" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Pages
                                         </label>
-                                        <input type="number" id="halaman" name="halaman" value="<%= book.pages %>"
+                                        <input type="number" id="pages" name="pages" value="<%= book.pages %>"
                                             step="1" min="1"
                                             class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                                     </div>
 
-                                    <!-- Bahasa -->
+                                    <!-- Language -->
                                     <div>
-                                        <label for="bahasa" class="block text-sm font-medium text-gray-700 mb-1">
-                                            Bahasa
+                                        <label for="language" class="block text-sm font-medium text-gray-700 mb-1">
+                                            Language
                                         </label>
-                                        <select id="bahasa" name="bahasa" class="...">
+                                        <select id="language" name="language" class="...">
                                             <option value="indonesia" <%=book.language==='indonesia' ? 'selected' : ''
                                                 %>>Indonesia</option>
                                             <option value="inggris" <%=book.language==='inggris' ? 'selected' : '' %>
@@ -174,8 +175,8 @@
 
                                                 <label class="inline-flex items-center">
                                                     <input type="checkbox" name="category" value="Business"
-                                                        <%=selectedCategories.includes("Business") ? 'checked' : ''
-                                                        %> class="..." />
+                                                        <%=selectedCategories.includes("Business") ? 'checked' : '' %>
+                                                    class="..." />
                                                     <span class="ml-2 text-sm text-gray-700">Business</span>
                                                 </label>
 
@@ -188,15 +189,15 @@
 
                                                 <label class="inline-flex items-center">
                                                     <input type="checkbox" name="category" value="Self Help"
-                                                        <%=selectedCategories.includes("Self Help") ? 'checked' : ''
-                                                        %> class="..." />
+                                                        <%=selectedCategories.includes("Self Help") ? 'checked' : '' %>
+                                                    class="..." />
                                                     <span class="ml-2 text-sm text-gray-700">Self Help</span>
                                                 </label>
 
                                                 <label class="inline-flex items-center">
                                                     <input type="checkbox" name="category" value="Fantasi"
-                                                        <%=selectedCategories.includes("Fantasi") ? 'checked' : ''
-                                                        %> class="..." />
+                                                        <%=selectedCategories.includes("Fantasi") ? 'checked' : '' %>
+                                                    class="..." />
                                                     <span class="ml-2 text-sm text-gray-700">Fantasi</span>
                                                 </label>
                                         </div>
@@ -204,15 +205,15 @@
                                 </div>
                             </div>
 
-                            <!-- Deskripsi -->
+                            <!-- Description -->
                             <div class="mb-8">
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4 border-b pb-2">
-                                    <i class="fas fa-align-left text-blue-600 mr-2"></i> Deskripsi
+                                    <i class="fas fa-align-left text-blue-600 mr-2"></i> Description
                                 </h3>
-                                <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-1">
-                                    Deskripsi Buku <span class="text-red-500">*</span>
+                                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Book Description <span class="text-red-500">*</span>
                                 </label>
-                                <textarea id="deskripsi" name="deskripsi" rows="5" required
+                                <textarea id="description" name="description" rows="5" required
                                     class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"><%= book.description %></textarea>
                             </div>
 
@@ -236,5 +237,18 @@
                 </form>
             </div>
         </main>
+
+
+        <script>
+            const input = document.getElementById('coverInput');
+            const preview = document.getElementById('previewImage');
+
+            input.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    preview.src = URL.createObjectURL(file);
+                }
+            });
+        </script>
 
         <%- include('layouts/footer') %>
